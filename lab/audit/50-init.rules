@@ -1,0 +1,16 @@
+## Camera rules: identity, sudo, persistence
+
+# User accounts and passwords
+-w /etc/passwd -p wa -k identity
+-w /etc/group -p wa -k identity
+-w /etc/shadow -p wa -k identity
+
+# Who is allowed to be administrator
+-w /etc/sudoers -p wa -k sudo_changes
+-w /etc/sudoers.d/ -p wa -k sudo_changes
+
+# Ways to make something run again later
+-w /etc/crontab -p wa -k persist_cron
+-w /etc/cron.d/ -p wa -k persist_cron
+-w /var/spool/cron/crontabs/ -p wa -k persist_cron
+-w /etc/systemd/system/ -p wa -k persist_systemd
